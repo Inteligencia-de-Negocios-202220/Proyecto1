@@ -141,21 +141,3 @@ if __name__ == '__main__':
         log.info(f"F1: {f1_score(y_test, preds_test, pos_label = 'non-suicide')}")
         log.info("\n"+classification_report(y_test, preds_test))
         dump(clf, os.path.dirname(__file__) + "/models/neural_network.joblib")
-
-    api = MediaFireApi()
-    session = api.user_get_session_token(
-        email='juan.romero1201@gmail.com',
-        password='Ff7d3NHqTPxzkb4CboRhXTYYxSbY',
-        app_id='42511')
-
-    api.session = session
-
-    uploader = MediaFireUploader(api)
-    response = api.user_get_info()
-    for file in [f for f in listdir(os.path.dirname(__file__)+ "/models") if isfile(join(os.path.dirname(__file__)+ "/models", f))]:
-        path = os.path.abspath(os.path.dirname(__file__)+ f"/models/{file}")
-        if not path.endswith(".gitkeep"):
-            log.info(f"Uploading {file}...")
-            with open(os.path.abspath(path), 'rb') as fd:
-                result = uploader.upload(fd, file)
-            log.info(f"File Uploaded")
