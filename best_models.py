@@ -11,7 +11,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-from mediafire import MediaFireApi, MediaFireUploader
 from logger import define_log, StreamToLogger
 from sklearn.metrics import classification_report
 import numpy as np
