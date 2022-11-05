@@ -130,4 +130,5 @@ dmypy.json
 *.csv
 *.xlsx
 /Gitlab/*
-*.joblib
+*k.joblib
+*t.joblib
