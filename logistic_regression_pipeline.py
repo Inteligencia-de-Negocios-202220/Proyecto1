@@ -10,6 +10,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.metrics import classification_report
 from joblib import dump
+
 # Descargando las stopwords
 nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))

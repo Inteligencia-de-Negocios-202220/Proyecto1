@@ -3,5 +3,6 @@ pandas
 nltk
 sklearn
 joblib==1.2.0
-fastapi
+fastapi[all]
 uvicorn
+pydantic
