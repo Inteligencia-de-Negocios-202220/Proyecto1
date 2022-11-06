@@ -18,11 +18,11 @@ def root(request: Request):
 async def predict(request:Request):
     if request.method == "POST":
         form = await request.form()
-        if form["message"]:
+        if form.get("message"):
             data = form["message"]
             model = Model()
             return templates.TemplateResponse("index.html",  {"request": request, "prediction": model.predict(data), "og_message": form["message"]})
     return templates.TemplateResponse("index.html", {"request": request})
 
 if __name__ == "__main__":
-    uvicorn.run("api:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
