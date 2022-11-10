@@ -19,49 +19,45 @@
     </style>
 </head>
 
-<body>
-    <section class="text-gray-700 body-font">
-        <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
-            <div class="lg:w-2/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-                <h1 class="font-bold mt-24 lg:mt-0 font-medium text-5xl text-gray-600">
-                    Suicide Predictor
+<body class="bg-indigo-300">
+    <section class="text-white body-font">
+        <div class="flex flex-col items-center center justify-center">
+                <h1 class="font-bold mt-24 lg:mt-0 font-medium text-5xl text-gray-600 justify-center">Proyecto 1</h1>
                 </h1>
-                <p class="leading-relaxed mt-4 text-xl text-gray-500">
-                    Predict if a message have suicidal tendencies or not.
+                <br>
+                <p class="text-2xl text-gray-600 justify-center py-5">
+                    Este sitio web es una herramienta que permite entrenar y predecir modelos de Machine Learning.
                 </p>
-            </div>
-            <form method="post" action="/predict">
-                <div
-                    class="lg:w-5/6 md:w-1/2 bg-gray-800 rounded-lg p-8 flex flex-col text-xl md:ml-auto w-full mt-10 md:mt-0">
-                    <div class="relative mb-4">
-                        <label for="message" class="leading-7 font-bold text-sm text-gray-100">Message</label>
-                        <textarea type="text" id="message" name="message" required="true" rows="4" cols="50"
-                            class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
-                    </div>
-                    <input
-                        class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                        type="submit" value="Predict" />
+        </div>
+        <! -- Here goes the forum with the text to predict -->
+        <div class="flex flex-col items-center center justify-center font-bold text-black py-24">
+            <form action="/predict" method="post">
+                <div class="flex flex-col items-center center justify-center">
+                    <label for="message" class="text-2xl text-gray-600 justify-center py-5">Ingrese el texto a predecir</label>
+                    <textarea name="message" type="text" required="true" id="message" cols="30" rows="10" class="border-2 border-gray-600 rounded-lg transition-colors duration-200"></textarea>
+                </div>
+                <div class="flex flex-col items-center center justify-center">
+                    <button type="submit" value="Predict" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">Predecir</button>
                 </div>
             </form>
-            <br />
-            <div class="mt-10 mr-4">
+        </div>
+            <div class="mt-10 mr-4 flex items-center justify-center">
                 <div class="">
                     {% if prediction == "non-suicide" %}
                     <p class="text-5xl text-gray-500 font-bold">
-                        The prediction was <span class="text-black-500">{{prediction}}</span>
+                        La predicción del modelo fue <span class="text-green-500"">no suicida</span>
                     </p>
                     {% else %}
                     <p class="text-5xl text-gray-500 font-bold">
-                        The prediction was <span class="text-red-500">{{prediction}}</span>
+                        La predicción del modelo fue <span class="text-red-500">suicida</span>
                     </p>
                     {% endif %}
                     <br>
                     <p class="leading-relaxed mt-4 text-xl text-gray-500">
-                        Original text: <span>{{og_message}}</span>
+                        <b>Texto de entrada:</b> <span>{{og_message}}</span>
                     </p>
                 </div>
             </div>
-        </div>
     </section>
 </body>
 
