@@ -20,7 +20,7 @@
 </head>
 
 <body class="bg-gray-900">
-    <section class="text-white body-font">
+    <section class="text-white body-font w-1/2">
         <div class="flex flex-col">
                 <h1 class="font-bold mt-24 lg:mt-0 font-medium text-5xl text-white-600 justify-center">Proyecto 1 - Grupo 18</h1>
                 <p style="white-space: pre-line; margin-top: 50px;">Realizado Por:
@@ -49,7 +49,7 @@
             </form>
         </div>
             <div class="mt-10 mr-4 flex items-center justify-center">
-                <div class="">
+                <div class="flex flex-col overflow-x-auto">
                     {% if prediction == "non-suicide" %}
                         <p class="text-5xl text-white-500 font-bold">
                             La predicción del modelo fue <span class="text-green-500">no suicida</span>
@@ -61,7 +61,7 @@
                     {% endif %}
                     <br>
                     {% if prediction %}
-                        <p class="leading-relaxed mt-4 text-xl text-white-500">
+                        <p class="leading-relaxed mt-4 text-xl text-white-500 overflow-hidden">
                             <b>Texto de entrada:</b> <span>{{og_message}}</span>
                         </p>
                     {% endif %}
