@@ -8,35 +8,42 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- Compiled and minified CSS -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
-    <title>Proyecto 1</title>
+    <title>Proyecto 1 - Grupo 18</title>
     <style>
         body {
+            padding-top:8vh;
             display: flex;
-            height: 100vh;
             justify-content: center;
             align-items: center;
         }
     </style>
 </head>
 
-<body class="bg-indigo-300">
+<body class="bg-gray-900">
     <section class="text-white body-font">
-        <div class="flex flex-col items-center center justify-center">
-                <h1 class="font-bold mt-24 lg:mt-0 font-medium text-5xl text-gray-600 justify-center">Proyecto 1</h1>
-                </h1>
+        <div class="flex flex-col">
+                <h1 class="font-bold mt-24 lg:mt-0 font-medium text-5xl text-white-600 justify-center">Proyecto 1 - Grupo 18</h1>
+                <p style="white-space: pre-line; margin-top: 50px;">Realizado Por:
+                    Juan Andrés Romero - 202013449
+                    Gabriela Cagua - 201812944
+                    Juan Andrés Méndez - 20181580138
+                </p>
                 <br>
-                <p class="text-2xl text-gray-600 justify-center py-5">
-                    Este sitio web es una herramienta que permite entrenar y predecir modelos de Machine Learning.
+                <p class="text-2xl text-white-600 justify-center py-3">
+                    Este sitio web es una herramienta que permite predecir si un comentario tiene tendencias suicidas o no usando un modelo de machine learning.
                 </p>
         </div>
-        <! -- Here goes the forum with the text to predict -->
-        <div class="flex flex-col items-center center justify-center font-bold text-black py-24">
+        <div class="flex flex-col items-center center justify-center font-bold py-18">
             <form action="/predict" method="post">
                 <div class="flex flex-col items-center center justify-center">
-                    <label for="message" class="text-2xl text-gray-600 justify-center py-5">Ingrese el texto a predecir</label>
-                    <textarea name="message" type="text" required="true" id="message" cols="30" rows="10" class="border-2 border-gray-600 rounded-lg transition-colors duration-200"></textarea>
+                    <label for="message" class="text-2xl text-white-600 justify-center py-5">Ingrese el texto a predecir</label>
+                    <textarea name="message" type="text" required="true" id="message" cols="50" rows="8" class="border-2 border-gray-600 rounded-lg transition-colors duration-200 text-black"></textarea>
                 </div>
-                <div class="flex flex-col items-center center justify-center">
+                <br>
+                <div class="flex flex-row space-x-2 items-center center justify-center">
+                    {% if prediction %}
+                        <button type="button" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full" onclick="location.href = '/'">Limpiar predicción</button>
+                    {% endif %}
                     <button type="submit" value="Predict" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">Predecir</button>
                 </div>
             </form>
@@ -44,18 +51,20 @@
             <div class="mt-10 mr-4 flex items-center justify-center">
                 <div class="">
                     {% if prediction == "non-suicide" %}
-                    <p class="text-5xl text-gray-500 font-bold">
-                        La predicción del modelo fue <span class="text-green-500"">no suicida</span>
-                    </p>
-                    {% else %}
-                    <p class="text-5xl text-gray-500 font-bold">
-                        La predicción del modelo fue <span class="text-red-500">suicida</span>
-                    </p>
+                        <p class="text-5xl text-white-500 font-bold">
+                            La predicción del modelo fue <span class="text-green-500">no suicida</span>
+                        </p>
+                    {% elif prediction == "suicide" %}
+                        <p class="text-5xl text-white-500 font-bold">
+                            La predicción del modelo fue <span class="text-red-500">suicida</span>
+                        </p>
                     {% endif %}
                     <br>
-                    <p class="leading-relaxed mt-4 text-xl text-gray-500">
-                        <b>Texto de entrada:</b> <span>{{og_message}}</span>
-                    </p>
+                    {% if prediction %}
+                        <p class="leading-relaxed mt-4 text-xl text-white-500">
+                            <b>Texto de entrada:</b> <span>{{og_message}}</span>
+                        </p>
+                    {% endif %}
                 </div>
             </div>
     </section>
